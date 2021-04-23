@@ -15,6 +15,6 @@ public interface ProdutoDAO {
     Produto findById(Integer id);
     List<Produto> findByName(String name);
     List<Produto> findAll();
-    List<Produto> findByCategoriaId(Integer idcategoria);
+    List<Produto> findByDescricaoAndIdCategoria(String desc, Integer idcategoria);
 
 }

@@ -77,7 +77,7 @@ public class CategoriaDaoJDBC implements CategoriaDAO {
     public void deleteById(Integer id) {
         PreparedStatement st = null;
         try{
-            st = conn.prepareStatement("DELETE from categoria where id = ?");
+            st = conn.prepareStatement("DELETE from categoria where idcategoria = ?");
             st.setInt(1, id);
             st.executeUpdate();
 
