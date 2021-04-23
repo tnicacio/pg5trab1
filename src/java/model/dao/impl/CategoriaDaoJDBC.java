@@ -55,7 +55,21 @@ public class CategoriaDaoJDBC implements CategoriaDAO {
 
     @Override
     public void update(Categoria obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement("UPDATE categoria set "
+                    + "descricao = ? "
+                    + "where idcategoria = ?");
+            st.setString(1, obj.getDescricao());
+            st.setInt(2, obj.getIdcategoria());
+
+            st.executeUpdate();
+
+        } catch (SQLException e){
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
