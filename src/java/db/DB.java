@@ -20,7 +20,7 @@ public class DB {
                 Class.forName("org.postgresql.Driver");
                 conn = DriverManager.getConnection(url, user, password);
             } catch (SQLException | ClassNotFoundException e) {
-                 System.out.println(e.getMessage());
+                 throw new DbException(e.getMessage());
             }   
         }
         return conn;
@@ -31,7 +31,7 @@ public class DB {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+                throw new DbException(e.getMessage());
             }
         }
     }
@@ -41,7 +41,7 @@ public class DB {
             try {
                 sttmt.close();
             } catch (SQLException e) {
-                 System.out.println(e.getMessage());
+                 throw new DbException(e.getMessage());
             }
         }
     }
@@ -51,7 +51,7 @@ public class DB {
             try {
                 rs.close();
             } catch (SQLException e) {
-                 System.out.println(e.getMessage());
+                 throw new DbException(e.getMessage());
             }
         }
     }
