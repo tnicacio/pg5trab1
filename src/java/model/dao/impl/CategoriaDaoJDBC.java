@@ -140,7 +140,27 @@ public class CategoriaDaoJDBC implements CategoriaDAO {
 
     @Override
     public List<Categoria> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try{
+            String sql = "select c.* from categoria c "
+                      + "order by c.descricao";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            
+            List<Categoria> categorias = new ArrayList<>();
+            while (rs.next()){
+                Categoria categoria = instantiateCategoria(rs);
+                categorias.add(categoria);
+            }
+            return categorias;
+            
+        } catch(SQLException e){
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(st);
+        }
     }
     
     private Categoria instantiateCategoria(ResultSet rs) throws SQLException {
