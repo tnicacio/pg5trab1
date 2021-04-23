@@ -74,12 +74,42 @@ public class CategoriaDaoJDBC implements CategoriaDAO {
 
     @Override
     public void deleteById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement st = null;
+        try{
+            st = conn.prepareStatement("DELETE from categoria where id = ?");
+            st.setInt(1, id);
+            st.executeUpdate();
+
+        } catch(SQLException e){
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
     public Categoria findById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try{
+            st = conn.prepareStatement("select c.* "
+                    + "from categoria c "
+                    + "where c.idcategoria = ?");
+            st.setInt(1, id);
+            rs = st.executeQuery();
+            
+            if(rs.next()){
+                Categoria obj = instantiateCategoria(rs);
+                return obj;
+            }
+            return null;
+            
+        } catch(SQLException e){
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(st);
+        }
     }
 
     @Override
@@ -90,6 +120,13 @@ public class CategoriaDaoJDBC implements CategoriaDAO {
     @Override
     public List<Categoria> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private Categoria instantiateCategoria(ResultSet rs) throws SQLException {
+        Categoria obj = new Categoria();
+        obj.setIdcategoria(rs.getInt("idcategoria"));
+        obj.setDescricao(rs.getString("descricao"));
+        return obj;
     }
     
 }
