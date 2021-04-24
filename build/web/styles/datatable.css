@@ -1,0 +1,28 @@
+.datatable {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 580px;
+    box-shadow: 0 0 20px rgba(0,0,0, 0.15);
+}
+
+.datatable thead tr {
+    /*background-color: #009879;*/
+    /*color: #ffffff;*/
+    background: var(--background-darker);
+    text-align: left;
+}
+
+.datatable th,
+.datatable td {
+    padding: 8px;
+}
+
+.datatable tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.datatable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}

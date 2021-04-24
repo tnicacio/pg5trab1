@@ -2,30 +2,93 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="styles/global.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/consultas.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/datatable.css"/>
+        
+        <title>PG5T1</title>
     </h:head>
     <h:body>
-        <h:form>
-            <h:panelGrid columns="3">
-                <h:outputLabel>Informe a Categoria</h:outputLabel>
-                <h:inputText value="#{beanProduto.descricao}" />
-                <h:commandButton value="Pesquisar" action="#{beanProduto.listar()}" />
-            </h:panelGrid>
-            <h:dataTable var="pd" value="#{beanProduto.lista}" rendered="#{not empty beanProduto.lista}">
-                <h:column>
-                    <f:facet name="header">ID</f:facet>
-                    <h:outputLabel value="#{pd.idproduto}" />
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Descricao</f:facet>
-                    <h:outputLabel value="#{pd.descricao}" />
-                </h:column>
-<!--            <h:column>
-                    <h:commandButton value="#{ct.idcontato}" action="#{beanContato.redirectEditar(ct.idcontato)}"></h:commandButton>
-                </h:column>-->
-            </h:dataTable>
-        </h:form>
+        <h:panelGroup layout="block" styleClass="container">
+            
+            <ui:include src="WEB-INF/navbar.xhtml" />
+            
+            <h:panelGroup layout="block" styleClass="content">
+                
+                <h:form styleClass="filtro-container">
+                    <h:panelGroup layout="block" styleClass="pesquisar-label">
+                        <h:outputLabel>Informe parte do nome do produto</h:outputLabel>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="filtro-input-action">
+                        <h:panelGroup layout="block" styleClass="filtro-input-text">
+                            <h:inputText value="#{beanProduto.descricao}" />
+                        </h:panelGroup>
+                        
+                        <h:panelGroup layout="block" styleClass="filtro-action-button">
+                            <h:commandButton value="Pesquisar" action="#{beanProduto.listar()}" />
+                        </h:panelGroup>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="filtro-categoria-container">
+                        <h:selectBooleanCheckbox value="#{beanProduto.isFiltrarCategoria}" />
+                        <h:outputLabel >Filtrar por categoria?</h:outputLabel>                                
+                        <h:selectOneMenu value="#{beanProduto.idcategoria}"
+                                         style="padding: 5px 10px;
+                                                border:none;
+                                                border-radius: 10px;
+                                                background-image: url(/assets/arrow_drop_down.png);
+                                                background-color: white;"
+                        >
+                            <f:selectItems value="#{beanCategoria.lista}" var="cat" itemValue="#{cat.idcategoria}" itemLabel="#{cat.descricao}" />
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+                </h:form>
+                <h:form styleClass="form-table">
+                    <h:dataTable 
+                        var="pd"
+                        value="#{beanProduto.lista}"
+                        rendered="#{not empty beanProduto.lista}"
+                        styleClass="datatable"
+                    >
+                        <h:column>
+                            <f:facet name="header">Codigo</f:facet>
+                            <h:outputLabel value="#{pd.idproduto}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Descrição</f:facet>
+                            <h:outputLabel value="#{pd.descricao}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Categoria</f:facet>
+                            <h:outputLabel value="#{beanProduto.getCategoriaDescricao(pd.idcategoria)}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">R$ Unitário</f:facet>
+                            <h:outputLabel value="#{pd.preco}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Estoque</f:facet>
+                            <h:outputLabel value="#{pd.estoque}" />
+                        </h:column>
+
+                        <h:column>
+                            <h:commandButton value="editar" action="#{beanProduto.redirectEditar(pd.idproduto)}"/>
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="excluir" action="#"></h:commandButton>
+                        </h:column>
+
+                    </h:dataTable>
+                </h:form>
+            </h:panelGroup>            
+        </h:panelGroup>
     </h:body>
 </html>

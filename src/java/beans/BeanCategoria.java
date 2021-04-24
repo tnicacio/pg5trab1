@@ -2,6 +2,7 @@ package beans;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import model.dao.CategoriaDAO;
 import model.dao.DaoFactory;
@@ -20,8 +21,10 @@ public class BeanCategoria {
     
     CategoriaDAO categoriaDAO = DaoFactory.createCategoriaDao();
     
+    @PostConstruct
     public void listar(){
-        this.findByName(descricao);
+        lista = this.findAll();
+        this.setPseudoNullOptionOnCategoria();
     }
     
     public void insert(Categoria categoria){
@@ -47,11 +50,13 @@ public class BeanCategoria {
 
     public List<Categoria> findByName(String descricao){
         lista = categoriaDAO.findByName(descricao);
+        this.setPseudoNullOptionOnCategoria();
         return lista;
     }
     
     public List<Categoria> findAll(){
         lista = categoriaDAO.findAll();
+        this.setPseudoNullOptionOnCategoria();
         return lista;
     }
     
@@ -83,6 +88,13 @@ public class BeanCategoria {
 
     public List<Categoria> getLista() {
         return lista;
+    }
+    
+    private void setPseudoNullOptionOnCategoria() {
+        if (lista != null && lista.get(0) != null
+                && lista.get(0).getIdcategoria() != 0){
+            lista.add(0, new Categoria(0,"---"));
+        }
     }
 
 }

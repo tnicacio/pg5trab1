@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    flex-direction: column; 
+    align-items: center;
+    background: var(--background);
+}
+
+.content {
+    width: 600px;
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    gap: 1rem;
+}
+
+.form-cadastro {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0,0,0, 0.15);
+    margin: 0 auto;
+    min-height: 340px;
+    width: 320px;
+    gap: 0.5rem;
+    padding: 1rem;
+    font-size: 14px;
+}
+
+.form-cadastro > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-cadastro > div input,
+.form-cadastro > div select,
+.form-cadastro > div textarea {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.form-cadastro > div textarea  {
+    min-height: 5rem;   
+}
+
+/*.form-cadastro > div select {
+    appearance: none;
+    overflow: hidden;
+    background: url(../assets/arrow_drop_down.png) 96% / 9% no-repeat #EEE;
+    background-color: white;
+}*/
+
+.form-buttons input[type=submit]{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    padding: 8px;
+    transition: filter 0.2s;
+}
+
+.salvar-btn {
+    background: var(--blue);
+}
+
+.cancelar-btn {
+    background: #cecaca;
+}
+
+.form-buttons input[type=submit]:hover {
+    filter: brightness(0.8);
+}

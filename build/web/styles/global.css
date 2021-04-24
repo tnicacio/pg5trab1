@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+    --background: #E5E5E5;
+    --background-darker: #C4C4C4;
+    --highlight: #7d7d7d;
+    --blue: #5cb3f1;
+}

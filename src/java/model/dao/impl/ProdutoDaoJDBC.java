@@ -131,7 +131,8 @@ public class ProdutoDaoJDBC implements ProdutoDAO {
         ResultSet rs = null;
         try{
             String sql = "select p.* from produto p "
-                      + "where upper(p.descricao) like upper('%" + descricao + "%')";
+                      + "where upper(p.descricao) like upper('%" + descricao + "%') "
+                      + "order by p.descricao";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             
