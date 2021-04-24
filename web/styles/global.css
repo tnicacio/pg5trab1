@@ -7,7 +7,12 @@
 
 :root {
     --background: #E5E5E5;
+    --border: #E5E5E5;
     --background-darker: #C4C4C4;
     --highlight: #7d7d7d;
+    --cancelbtn: #cecaca;
+    --white: #ffffff;
+    --red: #ff5151;
+    --green: #0e440e;
     --blue: #5cb3f1;
 }

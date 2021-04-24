@@ -4,11 +4,11 @@
     min-height: 100vh;
     flex-direction: column; 
     align-items: center;
-    background: var(--background);
+    /*background: var(--background);*/
 }
 
 .content {
-    width: 600px;
+    width: 670px;
     display: flex;
     flex:1;
     flex-direction: column;
@@ -38,12 +38,13 @@
 .filtro-input-text input[type=text] {
     width: 90%;
     border-radius: 10px;
-    border: 0.5px solid transparent;
+    border: 1px solid var(--border);
     padding: 5px 10px;
+    transition: border-color 0.2s;
 }
 
 .filtro-input-text input[type=text]:hover {
-    border: 0.5px solid var(--highlight);
+    border-color: var(--blue);
 } 
 
 .filtro-action-button {
@@ -61,7 +62,7 @@
 }
 
 .filtro-action-button input[type=submit]:hover {
-    filter: brightness(0.7);
+    filter: brightness(0.8);
 }
 
 .filtro-categoria-container {
@@ -69,4 +70,38 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    font-weight: bold;
+}
+
+.combobox-categoria {
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: white;
+    transition: border-color 0.2s;
+}
+
+.combobox-categoria:hover {
+    border-color: var(--blue);
+}
+
+.edit-btn,
+.exclude-btn {
+    cursor: pointer;
+    transition: filter 0.2s;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    background: var(--cancelbtn);
+    min-width: 60px;
+    padding: 3px 0;
+}
+
+.edit-btn:hover {
+    background: var(--blue);
+
+}
+.exclude-btn:hover {
+    background: var(--red);
 }

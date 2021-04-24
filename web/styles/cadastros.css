@@ -4,7 +4,7 @@
     min-height: 100vh;
     flex-direction: column; 
     align-items: center;
-    background: var(--background);
+    /*background: var(--background);*/
 }
 
 .content {
@@ -25,7 +25,8 @@
     width: 320px;
     gap: 0.5rem;
     padding: 1rem;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .form-cadastro > div {
@@ -40,10 +41,20 @@
     border: none;
     border-radius: 10px;
     margin-top: 5px;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+}
+
+.form-cadastro > div input[type=text]:hover,
+.form-cadastro > div select:hover,
+.form-cadastro > div textarea:hover {
+    border-color: var(--blue);
 }
 
 .form-cadastro > div textarea  {
-    min-height: 5rem;   
+    min-height: 5rem;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 /*.form-cadastro > div select {

@@ -47,26 +47,37 @@ public class BeanProduto {
     
     @PostConstruct
     public void init(){
-        this.findByName(descricao);
+        findByName(descricao);
     }
     
     public void listar(){
         if (isFiltrarCategoria && idcategoria != null && idcategoria > 0) {;
-            this.findByDescricaoAndIdCategoria(descricao, idcategoria);
+            findByDescricaoAndIdCategoria(descricao, idcategoria);
         } else {
-            this.findByName(descricao);
+            findByName(descricao);
         }
     }
     
     public String redirectEditar(Integer idproduto){
-//        this.idproduto = idproduto;
+        if (!isValidInteger(idproduto)) {
+            return "";
+        }
         return "cadastros?faces-redirect=true&idproduto=" + idproduto;
     }
     
     public void loadFieldsByIdProduto(Integer idproduto){
-        if (idproduto != null && idproduto > 0){
-            this.findById(idproduto);
+        if (isValidInteger(idproduto)){
+            findById(idproduto);
         }
+    }
+    
+    public String excludeItem(Integer idproduto){
+        String returnPath = "";
+        if (isValidInteger(idproduto)) {
+            deleteById(idproduto);
+            returnPath = "index?faces-redirect=true";
+        }
+        return returnPath;
     }
     
     public String salvar(Integer idprodutoparam){
@@ -103,16 +114,12 @@ public class BeanProduto {
             try {
                 Produto prod = new Produto(null, descricao, observacao, preco, estoque, idcategoria);
 
-                /*
-                Check if idproduto received as the method parameter is not null 
-                and has a valid value. Implicating that it is Editing mode;
-                */
-                if (idprodutoparam instanceof Integer && idprodutoparam > 0) {
+                if (isValidInteger(idprodutoparam)) {
                     prod.setIdproduto(idprodutoparam);
-                    this.update(prod);
+                    update(prod);
                     msg = new FacesMessage("Produto atualizado com sucesso");
                 } else {
-                    this.insert(prod);
+                    insert(prod);
                     msg = new FacesMessage("Produto salvo com sucesso");
                 }
                 
@@ -242,5 +249,9 @@ public class BeanProduto {
         }
         return desc;
     }
-     
+    
+    private boolean isValidInteger(Integer number){
+        return (number instanceof Integer && number >0);
+    }
+
 }

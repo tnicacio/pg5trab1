@@ -34,15 +34,9 @@
                     </h:panelGroup>
 
                     <h:panelGroup layout="block" styleClass="filtro-categoria-container">
-                        <h:selectBooleanCheckbox value="#{beanProduto.isFiltrarCategoria}" />
+                        <h:selectBooleanCheckbox styleClass="checkbox-boolean-filtrar" value="#{beanProduto.isFiltrarCategoria}" />
                         <h:outputLabel >Filtrar por categoria?</h:outputLabel>                                
-                        <h:selectOneMenu value="#{beanProduto.idcategoria}"
-                                         style="padding: 5px 10px;
-                                                border:none;
-                                                border-radius: 10px;
-                                                background-image: url(/assets/arrow_drop_down.png);
-                                                background-color: white;"
-                        >
+                        <h:selectOneMenu styleClass="combobox-categoria" value="#{beanProduto.idcategoria}">
                             <f:selectItems value="#{beanCategoria.lista}" var="cat" itemValue="#{cat.idcategoria}" itemLabel="#{cat.descricao}" />
                         </h:selectOneMenu>
                     </h:panelGroup>
@@ -55,7 +49,7 @@
                         styleClass="datatable"
                     >
                         <h:column>
-                            <f:facet name="header">Codigo</f:facet>
+                            <f:facet name="header">Código</f:facet>
                             <h:outputLabel value="#{pd.idproduto}" />
                         </h:column>
 
@@ -80,10 +74,10 @@
                         </h:column>
 
                         <h:column>
-                            <h:commandButton value="editar" action="#{beanProduto.redirectEditar(pd.idproduto)}"/>
+                            <h:commandButton styleClass="edit-btn" value="editar" action="#{beanProduto.redirectEditar(pd.idproduto)}"/>
                         </h:column>
                         <h:column>
-                            <h:commandButton value="excluir" action="#"></h:commandButton>
+                            <h:commandButton styleClass="exclude-btn" value="excluir" action="#{beanProduto.excludeItem(pd.idproduto)}"></h:commandButton>
                         </h:column>
 
                     </h:dataTable>
