@@ -1,6 +1,6 @@
 
 # Programação 5 - Trabalho 1
-Utilização de JSF para criação de duas páginas para manipulação de dados.
+Primeiro trabalho da disciplina de Programação 5 do curso de Análise e Desenvolvimento de Sistemas do IFC-Blumenau/SC, em que foi utilizado JSF para criação de duas páginas para manipulação de dados.<br/>
 A primeira contém um formulário para cadastro de produtos, inserindo ou atualizando-os no banco de dados.<br/>
 Enquanto a segunda página é responsável tanto pela visualização dos produtos, que podem ser filtrados pela descrição/nome ou categoria, quanto pelo redirecionamento do produto selecionado para a sua edição ou exclusão.<br/>
 Na página de visualização de dados, os produtos podem ser filtrados pela descrição/nome ou categoria.
