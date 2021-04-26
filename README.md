@@ -13,7 +13,7 @@ No vídeo abaixo, pode-se observar o funcionamento da aplicação: <br/><br/>
 https://user-images.githubusercontent.com/50798315/115975400-de3a9700-a53a-11eb-92cf-2de99d064b23.mp4
 
 ## Modelo Lógico
-O modelo consiste em duas tabelas: Produto e Categoria. Em que cada produto deve conter uma categoria.<br/><br/>
+O modelo consiste em duas tabelas: Produto e Categoria. Em que cada produto deve possuir uma categoria.<br/><br/>
 ![modelo-logico-1](https://user-images.githubusercontent.com/50798315/115975395-d7ac1f80-a53a-11eb-8165-fa94fcdd4cd0.png)
 
 ## Tecnologias utilizadas
