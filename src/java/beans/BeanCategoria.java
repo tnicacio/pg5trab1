@@ -91,8 +91,7 @@ public class BeanCategoria {
     }
     
     private void setPseudoNullOptionOnCategoria() {
-        if (lista != null && lista.get(0) != null
-                && lista.get(0).getIdcategoria() != 0){
+        if (lista != null){
             lista.add(0, new Categoria(0,"---"));
         }
     }
