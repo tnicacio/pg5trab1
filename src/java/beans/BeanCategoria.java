@@ -23,8 +23,8 @@ public class BeanCategoria {
     
     @PostConstruct
     public void listar(){
-        lista = this.findAll();
-        this.setPseudoNullOptionOnCategoria();
+        lista = findAll();
+        setPseudoNullOptionOnCategoria();
     }
     
     public void insert(Categoria categoria){
@@ -50,13 +50,13 @@ public class BeanCategoria {
 
     public List<Categoria> findByName(String descricao){
         lista = categoriaDAO.findByName(descricao);
-        this.setPseudoNullOptionOnCategoria();
+        setPseudoNullOptionOnCategoria();
         return lista;
     }
     
     public List<Categoria> findAll(){
         lista = categoriaDAO.findAll();
-        this.setPseudoNullOptionOnCategoria();
+        setPseudoNullOptionOnCategoria();
         return lista;
     }
     
