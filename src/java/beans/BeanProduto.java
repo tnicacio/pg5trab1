@@ -239,9 +239,10 @@ public class BeanProduto {
     
     public String getCategoriaDescricao(Integer idcat){
         String desc = "";
-        if (idcat == null){
+        if (!isValidInteger(idcat)){
             return desc;
-        } 
+        }
+
         Categoria cat = categoriaDAO.findById(idcat);
         if (cat != null) {
             desc = cat.getDescricao();
