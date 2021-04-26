@@ -28,17 +28,8 @@ public class BeanProduto {
     private Float preco;
     private Float estoque;
     private Integer idcategoria;
-    
     private boolean isFiltrarCategoria;
     private String categoriaDescricao;
-
-    public Boolean getIsFiltrarCategoria() {
-        return isFiltrarCategoria;
-    }
-
-    public void setIsFiltrarCategoria(Boolean isFiltrarCategoria) {
-        this.isFiltrarCategoria = isFiltrarCategoria;
-    }
     private List<Produto> lista = new ArrayList<>();
     
     ProdutoDAO produtoDAO = DaoFactory.createProdutoDao();
@@ -235,6 +226,14 @@ public class BeanProduto {
 
     public List<Produto> getLista() {
         return lista;
+    }
+
+    public Boolean getIsFiltrarCategoria() {
+        return isFiltrarCategoria;
+    }
+
+    public void setIsFiltrarCategoria(Boolean isFiltrarCategoria) {
+        this.isFiltrarCategoria = isFiltrarCategoria;
     }
     
     public String getCategoriaDescricao(Integer idcat){
