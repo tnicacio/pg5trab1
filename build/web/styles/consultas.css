@@ -81,7 +81,7 @@
     transition: border-color 0.2s;
 }
 
-.combobox-categoria:hover {
+.combobox-categoria:not(:disabled):hover {
     border-color: var(--blue);
 }
 
